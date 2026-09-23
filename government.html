@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Federal Contracting — Mud Mule LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0D1B2A;
+    --navy2:   #122136;
+    --navy3:   #1A2E45;
+    --red:     #C0272D;
+    --red2:    #E8333A;
+    --white:   #FFFFFF;
+    --offwhite:#E8EDF2;
+    --muted:   #8A9BB0;
+    --gold:    #C49A2A;
+    --border:  rgba(255,255,255,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,27,42,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 72px;
+  }
+
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--offwhite);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    transition: opacity .2s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { opacity: 1; }
+  .nav-links a.active { color: var(--red2); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 2rem 80px;
+    background:
+      linear-gradient(180deg, rgba(13,27,42,0) 60%, var(--navy) 100%),
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(18,33,54,0.9) 0%, var(--navy) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.02) 80px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.02) 80px);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 860px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-eyebrow span {
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .hero-eyebrow p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: .95;
+    text-transform: uppercase;
+    letter-spacing: -.01em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    color: var(--red2);
+    font-style: normal;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--red);
+    margin: 0 auto 1.75rem;
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--offwhite);
+    opacity: .85;
+    max-width: 580px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .75rem;
+  }
+
+  .badge {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--offwhite);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 2px;
+  }
+
+  .badge-red { border-color: var(--red); color: var(--red2); }
+
+  /* ── CREDENTIALS STRIP ── */
+  .credentials {
+    background: var(--navy3);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+  }
+
+  .credentials-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .cred-item {}
+
+  .cred-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .4rem;
+  }
+
+  .cred-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .cred-value.highlight { color: var(--red2); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--red2);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--offwhite);
+    opacity: .8;
+    max-width: 600px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+  }
+
+  /* ── WHAT WE SUPPLY ── */
+  .supply-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .supply-card {
+    background: var(--navy2);
+    padding: 2rem;
+    transition: background .2s;
+  }
+
+  .supply-card:hover { background: var(--navy3); }
+
+  .supply-icon {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .supply-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--white);
+    margin-bottom: .6rem;
+  }
+
+  .supply-card p {
+    font-size: .9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── WHY AGENCIES CHOOSE US ── */
+  .differentiators-section {
+    background: var(--navy2);
+    padding: 6rem 2rem;
+  }
+
+  .differentiators-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 4rem;
+    margin-top: 3rem;
+  }
+
+  .diff-item {}
+
+  .diff-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(192,39,45,0.15);
+    line-height: 1;
+    margin-bottom: .4rem;
+  }
+
+  .diff-item h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--white);
+    margin-bottom: .5rem;
+  }
+
+  .diff-item p {
+    font-size: .9rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── PAST PERFORMANCE ── */
+  .perf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .perf-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--red);
+  }
+
+  .perf-card .project {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: .25rem;
+  }
+
+  .perf-card .type {
+    font-size: .8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 600;
+  }
+
+  .perf-note {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(192,39,45,0.08);
+    border: 1px solid rgba(192,39,45,0.2);
+    font-size: .9rem;
+    color: var(--offwhite);
+    opacity: .85;
+  }
+
+  .perf-note strong { color: var(--red2); }
+
+  /* ── NAICS TABLE ── */
+  .naics-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    font-size: .9rem;
+  }
+
+  .naics-table thead th {
+    background: var(--navy3);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: .75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .naics-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
+  }
+
+  .naics-table tbody tr:hover { background: var(--navy2); }
+
+  .naics-table td {
+    padding: .85rem 1rem;
+    color: var(--offwhite);
+  }
+
+  .naics-table td:first-child {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--white);
+  }
+
+  /* ── CONTACT CTA ── */
+  .cta-section {
+    background: var(--navy3);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    color: var(--offwhite);
+    opacity: .8;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    font-size: 1.05rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    transition: background .2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--red2); }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    transition: border-color .2s, color .2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--white); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    .diff-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero { padding: 100px 1.25rem 60px; }
+    section { padding: 4rem 1.25rem; }
+    .cta-section { padding: 4rem 1.25rem; }
+    .credentials { padding: 1.75rem 1.25rem; }
+    footer { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="https://mudmulellc.com/assets/img/logo.png" alt="Mud Mule LLC" onerror="this.style.display='none'">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">About</a></li>
+    <li><a href="/">Services</a></li>
+    <li><a href="/">Experience</a></li>
+    <li><a href="/government.html" class="active">Government</a></li>
+    <li><a href="mailto:eric@mudmulellc.com">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span></span>
+      <p>SAM.gov Registered Vendor &nbsp;·&nbsp; Los Angeles, California</p>
+      <span></span>
+    </div>
+    <h1>Federal<br><em>Supply</em><br>Contracting</h1>
+    <div class="hero-divider"></div>
+    <p>Mud Mule LLC is a registered federal supply and facility services vendor serving government agencies across Southern California. Nearly a decade of federal compliance. Local presence. Direct accountability.</p>
+    <div class="hero-badges">
+      <span class="badge badge-red">Small Business</span>
+      <span class="badge">CAGE: 8RTD6</span>
+      <span class="badge">SAM.gov Registered</span>
+      <span class="badge">Los Angeles, CA</span>
+      <span class="badge">Est. 2016</span>
+    </div>
+  </div>
+</div>
+
+<!-- CREDENTIALS STRIP -->
+<div class="credentials">
+  <div class="credentials-inner">
+    <div class="cred-item">
+      <div class="cred-label">Legal Name</div>
+      <div class="cred-value">Mud Mule LLC</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-label">CAGE Code</div>
+      <div class="cred-value highlight">8RTD6</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-label">State of Inc.</div>
+      <div class="cred-value">California</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-label">Years in Operation</div>
+      <div class="cred-value highlight">9+</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-label">Business Type</div>
+      <div class="cred-value">Small Business</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-label">Primary Market</div>
+      <div class="cred-value">Southern California</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE SUPPLY -->
+<section>
+  <div class="section-label">Supply Categories</div>
+  <h2>What We Supply</h2>
+  <p class="section-intro">We source and deliver products across high-demand federal supply categories, from a single order to recurring contract fulfillment. No manufacturing — pure supply chain execution.</p>
+  <div class="supply-grid">
+    <div class="supply-card">
+      <span class="supply-icon">🧹</span>
+      <h3>Janitorial & Facility</h3>
+      <p>Cleaning chemicals, paper products, trash liners, mops, and all facility consumables for federal buildings, VA medical centers, and government installations.</p>
+    </div>
+    <div class="supply-card">
+      <span class="supply-icon">🦺</span>
+      <h3>PPE & Safety Supplies</h3>
+      <p>Nitrile gloves, safety eyewear, hi-visibility vests, hard hats, masks, and respirators. Available for single orders and recurring stockpile contracts.</p>
+    </div>
+    <div class="supply-card">
+      <span class="supply-icon">🔧</span>
+      <h3>MRO Supplies</h3>
+      <p>Maintenance, repair, and operations products — tools, fasteners, electrical, plumbing, and facility hardware for government facilities and military installations.</p>
+    </div>
+    <div class="supply-card">
+      <span class="supply-icon">🖨️</span>
+      <h3>Office & Breakroom</h3>
+      <p>Paper, toner, pens, notebooks, coffee, cleaning products, and the full spectrum of consumables that keep federal offices running.</p>
+    </div>
+    <div class="supply-card">
+      <span class="supply-icon">📦</span>
+      <h3>Packaging & Shipping</h3>
+      <p>Boxes, pallets, tape, labels, poly bags, and industrial packaging — backed by our freight and logistics background for reliable delivery specifications.</p>
+    </div>
+    <div class="supply-card">
+      <span class="supply-icon">🚨</span>
+      <h3>Emergency Preparedness</h3>
+      <p>Disaster response supplies, emergency kits, and FEMA-adjacent consumables. Supported by direct experience on multiple major wildfire and hurricane response operations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<div class="differentiators-section">
+  <div class="differentiators-inner">
+    <div class="section-label">Why Mud Mule</div>
+    <h2>What Sets Us Apart</h2>
+    <div class="diff-grid">
+      <div class="diff-item">
+        <div class="diff-num">01</div>
+        <h3>Local to Southern California</h3>
+        <p>We're based in Los Angeles — not Maryland or Virginia. Contracting officers in the LA Basin, Inland Empire, San Diego, and Ventura County are working with a vendor who is on the ground, not 2,700 miles away.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num">02</div>
+        <h3>9 Years of Federal Compliance</h3>
+        <p>Mud Mule LLC has operated under DOT and FMCSA federal regulatory requirements since 2016. We don't need to learn what federal compliance means — we've lived it as a core business function for nearly a decade.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num">03</div>
+        <h3>Owner Answers the Phone</h3>
+        <p>Every contract is managed personally by the owner-operator. No account managers, no escalation chains. Contracting officers deal directly with the person responsible for performance on every order.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num">04</div>
+        <h3>Logistics Is What We Do</h3>
+        <p>Our commercial trucking background gives us a delivery mindset that pure supply vendors don't have — freight coordination, load specifications, last-mile delivery, and timeline accountability built in from day one.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAST PERFORMANCE -->
+<section>
+  <div class="section-label">Track Record</div>
+  <h2>Past Performance</h2>
+  <p class="section-intro">Mud Mule LLC has operated as a federally regulated business since 2016, with direct field experience on major public infrastructure and disaster response projects across California and beyond.</p>
+
+  <div class="perf-grid">
+    <div class="perf-card">
+      <div class="project">LAX Runway Repaving</div>
+      <div class="type">Infrastructure</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">Metro K Line</div>
+      <div class="type">Public Transit Infrastructure</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">Metro D Line Extension</div>
+      <div class="type">Public Transit Infrastructure</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">SoFi Stadium</div>
+      <div class="type">Large-Scale Construction</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">Intuit Dome</div>
+      <div class="type">Large-Scale Construction</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">George Lucas Museum</div>
+      <div class="type">Public Infrastructure</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">Camp Fire Response</div>
+      <div class="type">Disaster Response</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">Woolsey Fire Response</div>
+      <div class="type">Disaster Response</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">Dixie Fire Response</div>
+      <div class="type">Disaster Response</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">Park Fire Response</div>
+      <div class="type">Disaster Response</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">Hurricane Helene</div>
+      <div class="type">Disaster Response</div>
+    </div>
+    <div class="perf-card">
+      <div class="project">Franklin Fire Response</div>
+      <div class="type">Disaster Response</div>
+    </div>
+  </div>
+  <div class="perf-note">
+    <strong>Disaster response experience is a direct asset</strong> for FEMA-adjacent and emergency supply contracting. Mud Mule LLC has supported response operations on 10+ major wildfire and hurricane events, providing logistics support in high-pressure, time-critical environments.
+  </div>
+</section>
+
+<!-- NAICS CODES -->
+<section style="padding-top: 0;">
+  <div class="section-label">Registration Data</div>
+  <h2>NAICS Codes</h2>
+  <p class="section-intro">Mud Mule LLC is registered under the following NAICS codes for federal procurement purposes.</p>
+  <table class="naics-table">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Description</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>561720</td>
+        <td>Janitorial Services</td>
+        <td>Facility Services</td>
+      </tr>
+      <tr>
+        <td>424310</td>
+        <td>Piece Goods, Notions & Janitorial Supply Wholesale</td>
+        <td>Supply Distribution</td>
+      </tr>
+      <tr>
+        <td>423840</td>
+        <td>Industrial & Personal Service Paper Merchant Wholesalers</td>
+        <td>Supply Distribution</td>
+      </tr>
+      <tr>
+        <td>424120</td>
+        <td>Stationery & Office Supplies Merchant Wholesalers</td>
+        <td>Supply Distribution</td>
+      </tr>
+      <tr>
+        <td>424610</td>
+        <td>Plastics Materials & Basic Forms Merchant Wholesalers</td>
+        <td>PPE / Safety</td>
+      </tr>
+      <tr>
+        <td>484121</td>
+        <td>General Freight Trucking, Long-Distance, TL</td>
+        <td>Logistics & Transportation</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Ready to Work<br>With Your Agency</h2>
+  <p>Contracting officers — we're registered in SAM.gov, capable, and local. Request our capability statement or reach out directly to discuss your procurement needs.</p>
+  <div class="cta-buttons">
+    <a href="mailto:eric@mudmulellc.com?subject=Government Contracting Inquiry — Mud Mule LLC" class="btn-primary">Contact Us</a>
+    <a href="/MudMule_CapabilityStatement_2026.pdf" class="btn-outline">Download Capability Statement</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <strong style="color:var(--white)">Mud Mule LLC</strong> &nbsp;·&nbsp;
+    Los Angeles, California &nbsp;·&nbsp;
+    CAGE: 8RTD6 &nbsp;·&nbsp;
+    CA LLC #201625910647
+  </div>
+  <div>
+    <a href="mailto:eric@mudmulellc.com">eric@mudmulellc.com</a>
+    &nbsp;·&nbsp;
+    <a href="tel:2138009531">(213) 800-9531</a>
+    &nbsp;·&nbsp;
+    <a href="/">mudmulellc.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
