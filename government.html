@@ -120,8 +120,9 @@
     margin-bottom: 2rem;
   }
 
-  .hero-eyebrow span {
+  .hero-eyebrow > span {
     display: block;
+    flex-shrink: 0;
     width: 36px;
     height: 2px;
     background: var(--red);
@@ -134,7 +135,10 @@
     letter-spacing: .2em;
     text-transform: uppercase;
     color: var(--muted);
+    text-align: center;
   }
+
+  .hero-eyebrow p .nw { white-space: nowrap; }
 
   .hero h1 {
     font-family: 'Oswald', sans-serif;
@@ -560,8 +564,7 @@
   <div class="hero-inner">
     <div class="hero-eyebrow">
       <span></span>
-      <p>Federal Supply &amp; Facility Services &nbsp;·&nbsp; Los Angeles, California</p>
-      <span></span>
+      <p><span class="nw">Federal Supply &amp; Facility Services</span> &nbsp;·&nbsp; <span class="nw">Los Angeles, California</span></p>
     </div>
     <h1>Federal<br><em>Supply</em><br>Contracting</h1>
     <div class="hero-divider"></div>
