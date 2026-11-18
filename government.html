@@ -16,20 +16,20 @@
 <link rel="canonical" href="https://mudmulellc.com/government.html">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --navy:    #0D1B2A;
-    --navy2:   #122136;
-    --navy3:   #1A2E45;
-    --red:     #C0272D;
-    --red2:    #E8333A;
+    --navy:    #0A1628;
+    --navy2:   #0D1B30;
+    --navy3:   #142844;
+    --steel:   #1E3A5F;
+    --red:     #C8102E;
     --white:   #FFFFFF;
-    --offwhite:#E8EDF2;
+    --offwhite:#C8D4E0;
     --muted:   #8A9BB0;
-    --gold:    #C49A2A;
+    --gold:    #D4A017;
     --border:  rgba(255,255,255,0.08);
   }
 
@@ -38,7 +38,7 @@
   body {
     background: var(--navy);
     color: var(--white);
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     font-size: 16px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -49,7 +49,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    background: rgba(13,27,42,0.95);
+    background: rgba(10,22,40,0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     display: flex;
@@ -71,20 +71,17 @@
   }
 
   .nav-links a {
-    color: var(--offwhite);
+    color: var(--muted);
     text-decoration: none;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: .12em;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    opacity: 0.75;
-    transition: opacity .2s;
+    transition: color 0.2s;
   }
 
   .nav-links a:hover,
-  .nav-links a.active { opacity: 1; }
-  .nav-links a.active { color: var(--red2); }
+  .nav-links a.active { color: var(--gold); }
 
   /* ── HERO ── */
   .hero {
@@ -94,8 +91,8 @@
     justify-content: center;
     padding: 120px 2rem 80px;
     background:
-      linear-gradient(180deg, rgba(13,27,42,0) 60%, var(--navy) 100%),
-      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(18,33,54,0.9) 0%, var(--navy) 100%);
+      linear-gradient(180deg, rgba(10,22,40,0) 60%, var(--navy) 100%),
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(13,27,48,0.9) 0%, var(--navy) 100%);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -131,7 +128,7 @@
   }
 
   .hero-eyebrow p {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: .2em;
@@ -140,18 +137,18 @@
   }
 
   .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(3rem, 8vw, 6.5rem);
-    line-height: .95;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.05;
     text-transform: uppercase;
-    letter-spacing: -.01em;
+    letter-spacing: 0.04em;
     color: var(--white);
     margin-bottom: 1.5rem;
   }
 
   .hero h1 em {
-    color: var(--red2);
+    color: var(--red);
     font-style: normal;
   }
 
@@ -181,7 +178,7 @@
   .badge {
     border: 1px solid rgba(255,255,255,0.2);
     color: var(--offwhite);
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 600;
     font-size: 11px;
     letter-spacing: .14em;
@@ -190,7 +187,7 @@
     border-radius: 2px;
   }
 
-  .badge-red { border-color: var(--red); color: var(--red2); }
+  .badge-red { border-color: var(--red); color: var(--red); }
 
   /* ── CREDENTIALS STRIP ── */
   .credentials {
@@ -212,7 +209,7 @@
   .cred-item {}
 
   .cred-label {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: .15em;
@@ -222,13 +219,13 @@
   }
 
   .cred-value {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--white);
   }
 
-  .cred-value.highlight { color: var(--red2); }
+  .cred-value.highlight { color: var(--red); }
 
   /* ── SECTIONS ── */
   section {
@@ -238,12 +235,12 @@
   }
 
   .section-label {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: .2em;
     text-transform: uppercase;
-    color: var(--red2);
+    color: var(--red);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -260,8 +257,8 @@
   }
 
   h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
     font-size: clamp(2rem, 4vw, 3rem);
     text-transform: uppercase;
     line-height: 1;
@@ -302,7 +299,7 @@
   }
 
   .supply-card h3 {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 1.15rem;
     text-transform: uppercase;
@@ -338,16 +335,16 @@
   .diff-item {}
 
   .diff-num {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 3rem;
-    font-weight: 900;
-    color: rgba(192,39,45,0.15);
+    font-weight: 700;
+    color: rgba(200,16,46,0.15);
     line-height: 1;
     margin-bottom: .4rem;
   }
 
   .diff-item h3 {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 1.1rem;
     text-transform: uppercase;
@@ -378,7 +375,7 @@
   }
 
   .perf-card .project {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 1rem;
     text-transform: uppercase;
@@ -397,14 +394,14 @@
   .perf-note {
     margin-top: 2rem;
     padding: 1.25rem 1.5rem;
-    background: rgba(192,39,45,0.08);
-    border: 1px solid rgba(192,39,45,0.2);
+    background: rgba(200,16,46,0.08);
+    border: 1px solid rgba(200,16,46,0.2);
     font-size: .9rem;
     color: var(--offwhite);
     opacity: .85;
   }
 
-  .perf-note strong { color: var(--red2); }
+  .perf-note strong { color: var(--red); }
 
   /* ── NAICS TABLE ── */
   .naics-table {
@@ -416,7 +413,7 @@
 
   .naics-table thead th {
     background: var(--navy3);
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: .12em;
@@ -440,7 +437,7 @@
   }
 
   .naics-table td:first-child {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 1rem;
     color: var(--white);
@@ -478,7 +475,7 @@
     background: var(--red);
     color: var(--white);
     text-decoration: none;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 13px;
     letter-spacing: .12em;
@@ -489,13 +486,13 @@
     display: inline-block;
   }
 
-  .btn-primary:hover { background: var(--red2); }
+  .btn-primary:hover { background: #a50d25; }
 
   .btn-outline {
     border: 1px solid rgba(255,255,255,0.25);
     color: var(--white);
     text-decoration: none;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 13px;
     letter-spacing: .12em;
@@ -595,7 +592,7 @@
     </div>
     <div class="cred-item">
       <div class="cred-label">Years in Operation</div>
-      <div class="cred-value highlight">9+</div>
+      <div class="cred-value highlight">10+</div>
     </div>
     <div class="cred-item">
       <div class="cred-label">Business Type</div>
