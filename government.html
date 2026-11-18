@@ -51,7 +51,7 @@
     z-index: 100;
     background: rgba(10,22,40,0.95);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--red);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -176,8 +176,9 @@
   }
 
   .badge {
-    border: 1px solid rgba(255,255,255,0.2);
-    color: var(--offwhite);
+    background: rgba(30,58,95,0.5);
+    border: 1px solid rgba(212,160,23,0.3);
+    color: var(--gold);
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
     font-size: 11px;
@@ -187,7 +188,7 @@
     border-radius: 2px;
   }
 
-  .badge-red { border-color: var(--red); color: var(--red); }
+  .badge-red { border-color: rgba(212,160,23,0.3); color: var(--gold); }
 
   /* ── CREDENTIALS STRIP ── */
   .credentials {
@@ -304,7 +305,7 @@
     font-size: 1.15rem;
     text-transform: uppercase;
     letter-spacing: .04em;
-    color: var(--white);
+    color: var(--gold);
     margin-bottom: .6rem;
   }
 
@@ -349,7 +350,7 @@
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: .05em;
-    color: var(--white);
+    color: var(--gold);
     margin-bottom: .5rem;
   }
 
@@ -518,7 +519,7 @@
     color: var(--muted);
   }
 
-  footer a { color: var(--muted); text-decoration: none; }
+  footer a { color: var(--gold); text-decoration: none; }
   footer a:hover { color: var(--white); }
 
   /* ── RESPONSIVE ── */
